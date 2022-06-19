@@ -1,8 +1,15 @@
+##############################################################################
+# Tommy Le
+# Northern Illinois University, Mechanical Engineering Dept
+# 6/19/2022
+# This is an interactive object tracking program. It tracks an object based on
+# color and plots user clicks on the window, which can be used for pursuit or 
+# waypoint navigation for mobile robots
+##############################################################################
+
 # imports
 import cv2
 import numpy as np
-import math
-import time
 
 # function looking for clicks
 def clickEvent(event, x, y, flags, params):
@@ -22,12 +29,12 @@ def clickEvent(event, x, y, flags, params):
         point = (x,y)
 
 # capturing video
-cap = cv2.VideoCapture(1) # change this value until you get the correct cam
+cap = cv2.VideoCapture(0) # change this value until you get the correct cam 0-inf
 flag = False
 prevCircle = None
-dist = lambda x1, y1, x2, y2: (x1-x2)**2+(y1-y2)**2 # mini function
+dist = lambda x1, y1, x2, y2: (x1-x2)**2+(y1-y2)**2  # mini function
 
-while True:
+while True: #inf loop
     _, img = cap.read()
     # resizing for faster processing
     img = cv2.resize(img, (320,240), interpolation = cv2.INTER_LINEAR)
