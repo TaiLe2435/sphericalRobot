@@ -1,8 +1,16 @@
-import serial
+#################################################################
+# Tommy Le
+# Northern Illinois University, Mechanical Engineering Dept
+# 6/19/2022
+# This is a basic example showing how serial communication works.
+# This code is to be ran with readDatafromPython.ino
+#################################################################
 
-arduinoData = serial.Serial('COM14', 9600)
+import serial      #lib for serial communication
 
-while True:
-    cmd = input('Please Enter Your Command: ')
-    cmd = cmd + '\r'
-    arduinoData.write(cmd.encode())
+arduinoData = serial.Serial('COM14', 9600)  #initializing port
+
+while True:         #inf loop
+    cmd = input('Please Enter Your Command: ') #take user input
+    cmd = cmd + '\r'    #add \r to indicate end of string
+    arduinoData.write(cmd.encode()) #write to serial port
